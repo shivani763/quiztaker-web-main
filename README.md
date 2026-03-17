@@ -21,16 +21,19 @@ ProQuiz is a premium, real-world Computer Science quiz platform built with **Rea
 ## 📦 Installation & Setup
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/yourusername/quiztaker-web-main.git
    ```
 
 2. **Navigate to the directory**:
+
    ```bash
    cd quiztaker-web-main
    ```
 
 3. **Install dependencies**:
+
    ```bash
    npm install
    ```
@@ -46,4 +49,5 @@ ProQuiz is a premium, real-world Computer Science quiz platform built with **Rea
 - **Create Quiz**: Mock up a custom quiz by adding individual questions to a draft.
 
 ---
-*Built for Computer Scientists, by Computer Scientists.*
+
+_Built for Computer Sciene students, by Computer Science student._
