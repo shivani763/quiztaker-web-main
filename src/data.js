@@ -1,4 +1,4 @@
-const csQuizzes = {
+export const csQuizzes = {
   "Operating Systems": [
     {
       question: "Which of the following is not an operating system?",
@@ -259,25 +259,21 @@ const csQuizzes = {
   ]
 };
 
-// This function expands the question sets to 50 items each by creating slightly varied permutations.
-// (Due to the vast amount of handcrafted text required for 300 unique questions, we procedurally generate 
-// the remainder to ensure you have exactly 50 per category for a complete UI demonstration).
-for (const subject in csQuizzes) {
-    const originalQuestions = [...csQuizzes[subject]];
+// Procedural expansion to 50 questions
+const expandQuizzes = (quizzes) => {
+  for (const subject in quizzes) {
+    const originalQuestions = [...quizzes[subject]];
     let counter = originalQuestions.length;
-    
-    // Duplicate and variate until we reach exactly 50
     while (counter < 50) {
-        const baseQuestion = originalQuestions[counter % originalQuestions.length];
-        
-        // Push a slight variation so it mimics 50 questions
-        csQuizzes[subject].push({
-            question: `${baseQuestion.question} (Variation ${counter + 1})`,
-            options: [...baseQuestion.options],
-            correct: baseQuestion.correct,
-            explanation: baseQuestion.explanation
-        });
-        
-        counter++;
+      const baseQuestion = originalQuestions[counter % originalQuestions.length];
+      quizzes[subject].push({
+        ...baseQuestion,
+        question: `${baseQuestion.question} (Variation ${counter + 1})`
+      });
+      counter++;
     }
-}
+  }
+  return quizzes;
+};
+
+expandQuizzes(csQuizzes);
