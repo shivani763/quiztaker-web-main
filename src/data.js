@@ -1,4 +1,4 @@
-export const csQuizzes = {
+const baseQuizzes = {
   "Operating Systems": [
     {
       question: "Which of the following is not an operating system?",
@@ -261,19 +261,24 @@ export const csQuizzes = {
 
 // Procedural expansion to 50 questions
 const expandQuizzes = (quizzes) => {
+  const expanded = {};
   for (const subject in quizzes) {
     const originalQuestions = [...quizzes[subject]];
-    let counter = originalQuestions.length;
+    expanded[subject] = [];
+    
+    let counter = 0;
     while (counter < 50) {
       const baseQuestion = originalQuestions[counter % originalQuestions.length];
-      quizzes[subject].push({
+      expanded[subject].push({
         ...baseQuestion,
-        question: `${baseQuestion.question} (Variation ${counter + 1})`
+        question: counter < originalQuestions.length 
+          ? baseQuestion.question // Use original for the first few
+          : `${baseQuestion.question} (Variation ${counter + 1})`
       });
       counter++;
     }
   }
-  return quizzes;
+  return expanded;
 };
 
-expandQuizzes(csQuizzes);
+export const csQuizzes = expandQuizzes(baseQuizzes);
