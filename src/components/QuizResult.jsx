@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQuizContext } from '../context/QuizContext';
+import { useAuthContext } from '../context/AuthContext';
 import { useNavigate, Navigate } from 'react-router-dom';
 import { RefreshCcw, Home } from 'lucide-react';
 
 const QuizResult = () => {
   const { activeSession, resetSession } = useQuizContext();
+  const { saveScore } = useAuthContext();
   const navigate = useNavigate();
 
-  if (!activeSession.isFinished) {
+  const { score, questions, subject, isFinished } = activeSession;
+  
+  // Save score only if the quiz is finished and has questions
+  useEffect(() => {
+    if (isFinished && questions.length > 0) {
+      saveScore(subject, score, questions.length);
+    }
+  }, [isFinished, questions.length, score, subject, saveScore]);
+
+  if (!isFinished) {
     return <Navigate to="/" replace />;
   }
 
-  const { score, questions } = activeSession;
   const percentage = questions.length > 0 ? (score / questions.length) * 100 : 0;
 
   const handleReturnHome = () => {

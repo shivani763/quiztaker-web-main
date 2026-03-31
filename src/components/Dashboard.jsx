@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuizContext } from '../context/QuizContext';
+import { useAuthContext } from '../context/AuthContext';
 import { BookOpen, CheckSquare, Layers, Code, Hash, Smartphone, BrainCircuit, Network, Database } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -21,9 +22,15 @@ const getIconForSubject = (subject) => {
 
 const Dashboard = () => {
   const { quizzes, startQuiz } = useQuizContext();
+  const { user } = useAuthContext();
   const navigate = useNavigate();
 
   const handleStartQuiz = (subject) => {
+    if (!user) {
+      alert("Sign in or Create an account to take quizzes and track your progress!");
+      navigate('/login');
+      return;
+    }
     startQuiz(subject);
     navigate('/quiz');
   };
@@ -32,7 +39,12 @@ const Dashboard = () => {
     <section id="dashboard" className="view active-view">
       <div className="hero">
         <h2>Master Computer Science</h2>
-        <p>Test your knowledge with comprehensively explained quizzes. Immediate feedback backed by standardized accuracy.</p>
+        <p>Test your knowledge with comprehensively explained quizzes. Sign in to track your knowledge status and evaluate your expertise.</p>
+        {!user && (
+          <div style={{ marginTop: '1.5rem' }}>
+            <button className="primary-btn" onClick={() => navigate('/signup')}>Start Tracking Progress</button>
+          </div>
+        )}
       </div>
       <h3 className="section-title">Select a Subject</h3>
       <div className="categories-grid">
