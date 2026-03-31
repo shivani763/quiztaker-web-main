@@ -1,15 +1,15 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { QuizProvider } from './context/QuizContext';
-import { AuthProvider } from './context/AuthContext';
-import Header from './components/Header';
-import Dashboard from './components/Dashboard';
-import QuizInterface from './components/QuizInterface';
-import QuizResult from './components/QuizResult';
-import Login from './components/Login';
-import Signup from './components/Signup';
-import Profile from './components/Profile';
-import './index.css'; // Make sure the styles are imported
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { QuizProvider } from "./context/QuizContext";
+import { AuthProvider } from "./context/AuthContext";
+import Header from "./components/Header";
+import Dashboard from "./components/Dashboard";
+import QuizInterface from "./components/QuizInterface";
+import QuizResult from "./components/QuizResult";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import Profile from "./components/Profile";
+import "./index.css"; // Import global styles
 
 const App = () => {
   return (
