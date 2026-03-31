@@ -17,13 +17,15 @@ ProQuiz is a premium, real-world Computer Science quiz platform built with **Rea
 - **Build Tool**: Vite
 - **Styling**: Vanilla CSS (Modern CSS Variables & Glassmorphism)
 - **State Management**: React Hooks (useState, useEffect)
+- **Routing**: React Router DOM
+- **Icons**: Lucide React
 
 ## 📦 Installation & Setup
 
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/quiztaker-web-main.git
+   git clone https://github.com/shivani763/quiztaker-web-main.git
    ```
 
 2. **Navigate to the directory**:
@@ -48,6 +50,41 @@ ProQuiz is a premium, real-world Computer Science quiz platform built with **Rea
 - **Home**: Browse and select a CS subject to start a quiz.
 - **Create Quiz**: Mock up a custom quiz by adding individual questions to a draft.
 
+## 📜 Available Scripts
+
+- `npm run dev` - Start the development server
+- `npm run build` - Build the project for production
+- `npm run preview` - Preview the production build
+- `npm run lint` - Run ESLint for code quality checks
+
+## 📁 Project Structure
+
+```
+quiztaker-web-main/
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   ├── Dashboard.jsx
+│   │   ├── Header.jsx
+│   │   ├── Login.jsx
+│   │   ├── Profile.jsx
+│   │   ├── QuizInterface.jsx
+│   │   ├── QuizResult.jsx
+│   │   └── Signup.jsx
+│   ├── context/
+│   │   ├── AuthContext.jsx
+│   │   └── QuizContext.jsx
+│   ├── App.jsx
+│   ├── data.js
+│   ├── index.css
+│   └── main.jsx
+├── package.json
+├── vite.config.js
+├── eslint.config.js
+└── README.md
+```
+
 ---
 
-_Built for Computer Sciene students, by Computer Science student._
+_Built for Computer Science students, by Computer Science students._
